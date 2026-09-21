@@ -1,0 +1,16 @@
+clear all
+tiledlayout(5,1)
+
+sinusoid = @(t, a, f, psi) (a*cos(t.*2*pi*f + psi));
+
+st = 0;
+ed = 0.5;
+spl = 100;
+
+step1a_row = @(a, f, psi) (sinusoid(linspace(st, ed, spl), a, f, psi));
+
+function L = disp_stem(A,)
+nexttile
+stem(step1a_row(5, 10, 0))
+title
+end
