@@ -29,13 +29,13 @@ y3bit = qnt(y_scaled, Q_Matrix);
 
 nexttile
 plot(y3bit)
-title("4f) 3 bit quantitized waveform")
+title("4f) 3 bit quantitized waveform (scale: " + y_scale_factor + ")")
 xlabel("sample")
 ylabel("amplitude")
 
 nexttile
 histogram(y3bit, 50);
-title("4f) 3 bit quantitized histogram")
+title("4f) 3 bit quantitized histogram (scale: " + y_scale_factor + ")")
 xlabel("amplitude")
 ylabel("occurances")
 
