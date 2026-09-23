@@ -1,26 +1,31 @@
 clear all
-tiledlayout(3,1)
+tiledlayout(4,1)
 
-data = zeros([30,1]);
-data(16) = data(16) + 1;
-data(12:end) = data(12:end) + 1;
+unit_step = @(offset, data) (data >= offset);
+unit_impulse = @(offset, data) (data == offset);
 
-nexttile
-stem(data)
-title("2a) Unit impulse and unit step")
-
-data2 = zeros([30,1]);
-data2(14:end) = data2(14:end) + 1;
-data2(15:end) = data2(15:end) - 1;
+dataY1 = [1:30];
 
 nexttile
-stem(data2)
-title("2b) Step at 14 - step at 15")
-
-data3 = zeros([30,1]);
-data3(9:end) = data3(9:end) + 1;
-data3(16:end) = data3(16:end) - 1;
+stem(dataY1, unit_impulse(16, dataY1));
+title("2a) unit impulse S(n-16)");
+xlabel("samples")
+ylabel("output")
 
 nexttile
-stem(data3)
-title("2c) Step at 9 - step at 16")
+stem(dataY1, unit_step(12, dataY1));
+title("2a) unit step u(n-12)");
+xlabel("samples")
+ylabel("output")
+
+nexttile
+stem(dataY1, unit_step(14, dataY1) - unit_step(15, dataY1));
+title("2b) x1[n] = u(n-14) - u(n-15)");
+xlabel("samples")
+ylabel("output")
+
+nexttile
+stem(dataY1, unit_step(9, dataY1) - unit_step(16,dataY1));
+title("2c) x2[n] = u(n-9) - u(n-16)");
+xlabel("samples")
+ylabel("output")

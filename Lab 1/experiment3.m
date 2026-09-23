@@ -1,30 +1,40 @@
 w = pi/10;
 range = 1:40;
-func = exp(range.*i*w);
+func = exp(range.*1i*w);
 
 tiledlayout(3,1);
 
 figure(1);
 nexttile;
 plot(func);
-title("3a) complex and real elements of the function");
+title("3a) complex and real elements of the x[n]");
+xlabel("Real Axis")
+ylabel("Complex Axis")
 
 figure(2)
 subplot(2,1,1);
-stem(real(func));
-title("3b) real component")
+stem(range,real(func));
+title("3b) x[n] real component")
+xlabel("sample num")
+ylabel("real value")
 
 subplot(2,1,2);
-stem(imag(func));
-title("3b) imaginary component")
+stem(range,imag(func));
+title("3b) x[n] imaginary component")
+xlabel("sample num")
+ylabel("imaginary value")
 
 figure(3)
 subplot(2,1,1);
-stem(angle(func));
-title("3c) phase");
+stem(range,angle(func));
+title("3c) x[n] phase");
+xlabel("sample num")
+ylabel("phase (rads)")
 
 subplot(2,1,2);
-stem(norm(func));
-title("3c) magnitude");
+stem(range,abs(func));
+title("3c) x[n] magnitude");
+xlabel("sample num")
+ylabel("magnitude")
 
 
